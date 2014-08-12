@@ -86,7 +86,7 @@ func createVagrantfile(filePath string, hostname string) (string, error) {
 
 	provider := settings.Provider
 	override := settings.Override
-	dest := "./private/" + hostname
+	dest := "./droplets/" + hostname
 
 	// Check directory
 	if err := os.Chdir(dest); err == nil {
