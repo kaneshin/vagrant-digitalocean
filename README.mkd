@@ -1,0 +1,15 @@
+# Vagrant for DigitalOcean
+
+## Usage
+
+Configure `config.json.sample` properly.
+
+```
+./vdo --input config.json --hostname example.com
+```
+
+
+## Author
+
+- Shintaro Kaneko <kaneshin0120@gmail.com>
+
