@@ -1,0 +1,13 @@
+{
+  "provider": {
+    "client_id": "",
+    "api_key": "",
+    "ssh_key_name": "",
+    "token": ""
+  },
+  "override": {
+    "ssh": {
+      "private_key_path": "~/.ssh/is_rsa"
+    }
+  }
+}

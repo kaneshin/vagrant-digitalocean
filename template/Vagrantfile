@@ -1,0 +1,28 @@
+Vagrant.configure('2') do |config|
+  config.vm.hostname              = '__CONFIG__VM__HOSTNAME__'
+
+  config.vm.provider :digital_ocean do |provider, override|
+    provider.client_id            = '__PROVIDER__CLIENT_ID__'
+    provider.api_key              = '__PROVIDER__API_KEY__'
+    provider.ssh_key_name         = '__PROVIDER__SSH_KEY_NAME__'
+    provider.token                = '__PROVIDER__TOKEN__'
+
+    override.ssh.private_key_path = '__OVERRIDE__SSH__PRIVATE_KEY_PATH__'
+    override.vm.box               = 'digital_ocean'
+    override.vm.box_url           = "https://github.com/smdahlen/vagrant-digitalocean/raw/master/box/digital_ocean.box"
+
+    provider.image                = 'CentOS 6.5 x64'
+    provider.region               = 'Singapore 1'
+    provider.size                 = '1GB'
+    provider.ca_path              = '/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt'
+  end
+
+  config.vm.provision :shell, :inline => <<-EOT
+    rpm -Uvh http://ftp-srv2.kddilabs.jp/Linux/distributions/fedora/epel/6/x86_64/epel-release-6-8.noarch.rpm
+    yum -y upgrade
+    yum -y install docker-io
+    chkconfig docker on
+    service docker start
+  EOT
+
+end
